@@ -38,22 +38,100 @@
 
 <body class="index-page">
 
+  
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <style>
+.visually-hidden {
+    display: none !important;
+}
 
+/* Behoud de bestaande stijlen voor de taalschakelaarknop */
+#language-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 1000; /* Zorgt ervoor dat de knop altijd zichtbaar blijft */
+}
+
+#language-toggle:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+#language-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+}
+
+/* Standaard weergave-instellingen */
+.NL {
+    display: block;
+}
+
+.ENG {
+    display: none;
+}
+    
+      </style>
+      <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const languageToggle = document.getElementById('language-toggle');
+    const engContent = document.querySelectorAll('.ENG');
+    const nlContent = document.querySelectorAll('.NL');
+    let isEnglish = false;
+
+    // Vervang de tekst van de knop door vlaggen
+    languageToggle.innerHTML = 'NL'; // Standaard Nederlandse vlag
+
+    languageToggle.addEventListener('click', function() {
+        if (isEnglish) {
+            // Schakel naar Nederlands
+            engContent.forEach(content => content.style.display = 'none');
+            nlContent.forEach(content => content.style.display = 'block');
+            languageToggle.innerHTML = 'NL';
+            isEnglish = false;
+        } else {
+            // Schakel naar Engels
+            engContent.forEach(content => content.style.display = 'block');
+            nlContent.forEach(content => content.style.display = 'none');
+            languageToggle.innerHTML = 'EN';
+            isEnglish = true;
+        }
+    });
+
+    // Standaard instelling: Nederlandse content tonen
+    engContent.forEach(content => content.style.display = 'none');
+    nlContent.forEach(content => content.style.display = 'block');
+});
+      </script>
+          <button id="language-toggle">Switch Language</button>
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="assets/img/Logo1.png" alt="">
         <!-- <h1 class="sitename">Dewi</h1> -->
       </a>
 
-      <nav id="navmenu" class="navmenu">
+      <nav id="navmenu" class="ENG navmenu">
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#careers">Work for AVANT</a></li>
-          <li><a href="#team">Team</a></li>
+          <li><a href="#about1">About</a></li>
+          <li><a href="#services1">Services</a></li>
+          <li><a href="#careers1">Work for AVANT</a></li>
+          <li><a href="#team1">Team</a></li>
           <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
@@ -71,12 +149,44 @@
               <li><a href="#">Dropdown 4</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact1">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="cta-btn" href="index.html#contact">Request shipment</a>
+      <a class="ENG cta-btn" href="index.html#contact">Request shipment</a>
+
+      <nav id="navmenu" class="NL navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">Over ons</a></li>
+          <li><a href="#services">Diensten</a></li>
+          <li><a href="#careers">Werken bij AVANT</a></li>
+          <li><a href="#team">Team</a></li>
+          <li class="dropdown"><a href="#"><span>Meer</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Optie 1</a></li>
+              <li class="dropdown"><a href="#"><span>Submenu</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Submenu 1</a></li>
+                  <li><a href="#">Submenu 2</a></li>
+                  <li><a href="#">Submenu 3</a></li>
+                  <li><a href="#">Submenu 4</a></li>
+                  <li><a href="#">Submenu 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Optie 2</a></li>
+              <li><a href="#">Optie 3</a></li>
+              <li><a href="#">Optie 4</a></li>
+            </ul>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      
+      <a class="NL cta-btn" href="index.html#contact">Verzendaanvraag</a>
+      
 
     </div>
   </header>
@@ -99,7 +209,42 @@
     </section><!-- /Hero Section -->
 
     <!-- About Section -->
-    <section id="about" class="about section">
+    <section id="about" class="NL about section">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3>Excellente Logistieke Diensten Wereldwijd</h3>
+            <img src="assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="AVANT Logistics Operaties">
+            <p>AVANT Logistics is een toonaangevende wereldwijde logistieke dienstverlener die zich inzet om supply chain-uitdagingen om te zetten in concurrentievoordelen. Met onze innovatieve oplossingen en klantgerichte aanpak zorgen wij voor een naadloos transport- en logistiekbeheer.</p>
+            <p>Dankzij ons uitgebreide netwerk, geavanceerde technologie en toegewijde team bieden wij betrouwbare, efficiënte en op maat gemaakte logistieke diensten in internationale markten.</p>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="content ps-0 ps-lg-5">
+              <p class="fst-italic">
+                Bedrijven versterken met strategische logistieke oplossingen
+              </p>
+              <ul>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Uitgebreide wereldwijde verzend- en vrachtdiensten</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Geavanceerde tracking en realtime logistiek beheer</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Aangepaste supply chain-oplossingen op maat van uw bedrijfsbehoeften</span></li>
+              </ul>
+              <p>
+                Bij AVANT Logistics verplaatsen we niet alleen vracht - we helpen uw bedrijf vooruit met precisie, betrouwbaarheid en innovatie.
+              </p>
+
+              <div class="position-relative mt-4">
+                <img src="assets/img/about-2.jpg" class="img-fluid rounded-4" alt="">
+                <a href="" class="glightbox pulsating-play-btn"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Over Ons Sectie -->
+
+    <section id="about1" class="ENG about section">
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
@@ -135,7 +280,53 @@
     </section><!-- /About Section -->
 
     <!-- Stats Section -->
-    <section id="stats" class="stats section light-background">
+    <section id="stats" class="NL stats section light-background">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="bi bi-globe color-blue flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="75" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Landen</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="bi bi-truck color-orange flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="12500" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Zendingen per Maand</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="bi bi-headset color-green flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Uur per dag beschikbaar</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="bi bi-people color-pink flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="500" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Logistieke Experts</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stats" class="ENG stats section light-background">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
           <div class="col-lg-3 col-md-6">
@@ -182,10 +373,10 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services section">
+    <section id="services" class="NL services section">
       <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
-        <p>Comprehensive Logistics Solutions</p>
+        <h2>Diensten</h2>
+        <p>Complete Logistieke Oplossingen</p>
       </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -200,9 +391,9 @@
                   <i class="bi bi-activity"></i>
                 </div>
                 <a href="#" class="stretched-link">
-                  <h3>Global Freight Forwarding</h3>
+                  <h3>Koeriersdiensten</h3>
                 </a>
-                <p>Seamless international shipping solutions across air, sea, and land transportation networks.</p>
+                <p>Betrouwbare en snelle koeriersdiensten voor al uw pakketten en zendingen.</p>
               </div>
             </div>
           </div>
@@ -217,9 +408,9 @@
                   <i class="bi bi-broadcast"></i>
                 </div>
                 <a href="#" class="stretched-link">
-                  <h3>Supply Chain Management</h3>
+                  <h3>Snel Transport</h3>
                 </a>
-                <p>End-to-end logistics solutions that optimize your supply chain efficiency and reduce operational costs.</p>
+                <p>Express transportdiensten voor tijdkritische leveringen, nationaal en internationaal.</p>
               </div>
             </div>
           </div>
@@ -234,15 +425,146 @@
                   <i class="bi bi-easel"></i>
                 </div>
                 <a href="#" class="stretched-link">
-                  <h3>Warehousing & Distribution</h3>
+                  <h3>ADR Transport</h3>
                 </a>
-                <p>Strategic warehousing solutions with advanced inventory management and global distribution capabilities.</p>
+                <p>Gecertificeerd transport voor gevaarlijke stoffen volgens de ADR-richtlijnen.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
+            <div class="service-item">
+              <div class="img">
+                <img src="assets/img/services-1.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-truck"></i>
+                </div>
+                <a href="#" class="stretched-link">
+                  <h3>Internationaal Transport</h3>
+                </a>
+                <p>Efficiënte en veilige transportoplossingen voor internationale zendingen.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="600">
+            <div class="service-item">
+              <div class="img">
+                <img src="assets/img/services-1.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-box"></i>
+                </div>
+                <a href="#" class="stretched-link">
+                  <h3>Op- en Overslag</h3>
+                </a>
+                <p>Flexibele opslag- en distributiemogelijkheden voor uw goederen en zendingen.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+</section>
+
+<section id="services1" class="ENG services section">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Services</h2>
+    <p>Complete Logistics Solutions</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-5">
+      <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+        <div class="service-item">
+          <div class="img">
+            <img src="assets/img/services-1.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="details position-relative">
+            <div class="icon">
+              <i class="bi bi-activity"></i>
+            </div>
+            <a href="#" class="stretched-link">
+              <h3>Courier Services</h3>
+            </a>
+            <p>Reliable and fast courier services for all your packages and shipments.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+        <div class="service-item">
+          <div class="img">
+            <img src="assets/img/services-2.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="details position-relative">
+            <div class="icon">
+              <i class="bi bi-broadcast"></i>
+            </div>
+            <a href="#" class="stretched-link">
+              <h3>Express Transport</h3>
+            </a>
+            <p>Express transport services for time-critical deliveries, nationally and internationally.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+        <div class="service-item">
+          <div class="img">
+            <img src="assets/img/services-3.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="details position-relative">
+            <div class="icon">
+              <i class="bi bi-easel"></i>
+            </div>
+            <a href="#" class="stretched-link">
+              <h3>ADR Transport</h3>
+            </a>
+            <p>Certified transport for dangerous goods according to ADR regulations.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
+        <div class="service-item">
+          <div class="img">
+            <img src="assets/img/services-1.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="details position-relative">
+            <div class="icon">
+              <i class="bi bi-truck"></i>
+            </div>
+            <a href="#" class="stretched-link">
+              <h3>International Transport</h3>
+            </a>
+            <p>Efficient and safe transport solutions for international shipments.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="600">
+        <div class="service-item">
+          <div class="img">
+            <img src="assets/img/services-1.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="details position-relative">
+            <div class="icon">
+              <i class="bi bi-box"></i>
+            </div>
+            <a href="#" class="stretched-link">
+              <h3>Loading & Transshipment</h3>
+            </a>
+            <p>Flexible storage and distribution solutions for your goods and shipments.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- Clients Section -->
     <section id="clients" class="clients section light-background">
@@ -282,7 +604,116 @@
     </section><!-- /Clients Section -->
 
     <!-- Features Section -->
-    <section id="features" class="features section">
+    <section id="features" class="NL features section">
+      <div class="container">
+        <ul class="nav nav-tabs row d-flex" data-aos="fade-up" data-aos-delay="100">
+          <li class="nav-item col-3">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
+              <i class="bi bi-truck"></i>
+              <h4 class="d-none d-lg-block">Snel & Betrouwbaar Transport</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
+              <i class="bi bi-globe"></i>
+              <h4 class="d-none d-lg-block">Internationaal Netwerk</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
+              <i class="bi bi-clock-history"></i>
+              <h4 class="d-none d-lg-block">24/7 Klantenservice</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4">
+              <i class="bi bi-box-seam"></i>
+              <h4 class="d-none d-lg-block">Innovatieve Logistieke Oplossingen</h4>
+            </a>
+          </li>
+        </ul>
+    
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+          <div class="tab-pane fade active show" id="features-tab-1">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Snel & Betrouwbaar Transport</h3>
+                <p class="fst-italic">
+                  Wij garanderen tijdige leveringen met precisie en zorg, zodat vertragingen tot een minimum worden beperkt.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> Spoed- en same-day leveringen beschikbaar.</li>
+                  <li><i class="bi bi-check2-all"></i> Real-time tracking voor al uw zendingen.</li>
+                  <li><i class="bi bi-check2-all"></i> Betrouwbare service met een bewezen staat van dienst.</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="assets/img/hero-bg.jpg" alt="Snel transport" class="img-fluid">
+              </div>
+            </div>
+          </div>
+    
+          <div class="tab-pane fade" id="features-tab-2">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Internationaal Netwerk</h3>
+                <p class="fst-italic">
+                  Ons uitgebreide wereldwijde netwerk zorgt ervoor dat uw zendingen probleemloos en efficiënt op hun bestemming aankomen.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> Sterke samenwerkingen met internationale vervoerders.</li>
+                  <li><i class="bi bi-check2-all"></i> Actief in meer dan 100 landen.</li>
+                  <li><i class="bi bi-check2-all"></i> Naadloze grensoverschrijdende logistieke oplossingen.</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="assets/img/hero-bg.jpg" alt="Internationaal transport" class="img-fluid">
+              </div>
+            </div>
+          </div>
+    
+          <div class="tab-pane fade" id="features-tab-3">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>24/7 Klantenservice</h3>
+                <p class="fst-italic">
+                  Ons toegewijde ondersteuningsteam is altijd beschikbaar om u te helpen bij al uw vragen, op elk moment van de dag.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> Live chat en telefonische ondersteuning, 24/7.</li>
+                  <li><i class="bi bi-check2-all"></i> Persoonlijke accountmanagers voor maatwerkservice.</li>
+                  <li><i class="bi bi-check2-all"></i> Snelle oplossing van verzendproblemen.</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="assets/img/hero-bg.jpg" alt="Klantenservice" class="img-fluid">
+              </div>
+            </div>
+          </div>
+    
+          <div class="tab-pane fade" id="features-tab-4">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Innovatieve Logistieke Oplossingen</h3>
+                <p class="fst-italic">
+                  Wij maken gebruik van de nieuwste technologieën om supply chains te optimaliseren en logistieke processen te stroomlijnen.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> AI-gestuurde routeoptimalisatie.</li>
+                  <li><i class="bi bi-check2-all"></i> Duurzame en milieuvriendelijke transportopties.</li>
+                  <li><i class="bi bi-check2-all"></i> Geavanceerde automatisering in magazijnbeheer.</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="assets/img/hero-bg.jpg" alt="Innovatieve logistiek" class="img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="ENG features section">
       <div class="container">
         <ul class="nav nav-tabs row d-flex" data-aos="fade-up" data-aos-delay="100">
           <li class="nav-item col-3">
@@ -391,11 +822,78 @@
       </div>
     </section>
     
+    
 
     <!-- Services 2 Section -->
    <!-- Working for AVANT Section -->
 <!-- Working for AVANT Section -->
-<section id="careers" class="careers section dark-background">
+<section id="careers" class="NL careers section dark-background">
+  <div class="container section-title" data-aos="fade-up">
+    <h2 class="text-white">Werken bij AVANT</h2>
+    <p class="text-white">Word deel van een dynamisch en innovatief logistiek team</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-5">
+      <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+        <div class="career-item bg-white shadow-lg rounded-4 p-4">
+          <div class="img mb-3">
+            <img src="assets/img/careers-1.jpg" class="img-fluid rounded-4" alt="">
+          </div>
+          <div class="details">
+            <div class="icon text-primary mb-3">
+              <i class="bi bi-briefcase fs-2"></i>
+            </div>
+            <a href="#" class="text-decoration-none">
+              <h3 class="text-dark mb-3">Professionele Groei</h3>
+            </a>
+            <p class="text-muted">Doorlopende leermogelijkheden en loopbaanontwikkelingsprogramma’s om je te helpen uitblinken in de logistieke sector.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+        <div class="career-item bg-white shadow-lg rounded-4 p-4">
+          <div class="img mb-3">
+            <img src="assets/img/careers-2.jpg" class="img-fluid rounded-4" alt="">
+          </div>
+          <div class="details">
+            <div class="icon text-primary mb-3">
+              <i class="bi bi-people fs-2"></i>
+            </div>
+            <a href="#" class="text-decoration-none">
+              <h3 class="text-dark mb-3">Samenwerkingscultuur</h3>
+            </a>
+            <p class="text-muted">Werk in een diverse, inclusieve omgeving die teamwork, innovatie en wederzijds respect waardeert.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+        <div class="career-item bg-white shadow-lg rounded-4 p-4">
+          <div class="img mb-3">
+            <img src="assets/img/careers-3.jpg" class="img-fluid rounded-4" alt="">
+          </div>
+          <div class="details">
+            <div class="icon text-primary mb-3">
+              <i class="bi bi-globe2 fs-2"></i>
+            </div>
+            <a href="#" class="text-decoration-none">
+              <h3 class="text-dark mb-3">Internationale Kansen</h3>
+            </a>
+            <p class="text-muted">Ontdek internationale loopbaanmogelijkheden en werk met een wereldwijde logistieke leider die actief is in 75 landen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
+      <a href="#contact" class="btn btn-light btn-lg shadow-sm">Contact</a>
+    </div>
+  </div>
+</section>
+
+<section id="careers1" class="ENG careers section dark-background">
   <div class="container section-title" data-aos="fade-up">
     <h2 class="text-white">Working at AVANT</h2>
     <p class="text-white">Join a Dynamic and Innovative Logistics Team</p>
@@ -580,7 +1078,7 @@
     <!-- Portfolio Section -->
    
     <!-- Team Section -->
-    <section id="team" class="team section light-background">
+    <section id="team1" class="ENG team section light-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -646,14 +1144,79 @@
 
     </section><!-- /Team Section -->
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
+    <section id="team" class="NL team section light-background">
 
-      <!-- Section Title -->
+      <!-- Sectie Titel -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2 class="text-white">Team</h2>
+        <p class="text-white">ONTDEK ONS TEAM</p>
+      </div><!-- Einde Sectie Titel -->
+
+      <div class="container">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="member">
+              <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Walter White</h4>
+                <span>Algemeen Directeur</span>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div><!-- Einde Teamlid -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="member">
+              <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Sarah Jhonson</h4>
+                <span>Productmanager</span>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div><!-- Einde Teamlid -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="member">
+              <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>William Anderson</h4>
+                <span>Technisch Directeur</span>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter-x"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div><!-- Einde Teamlid -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Team Sectie -->
+
+    <section id="contact" class="NL contact section">
+
+      <!-- Sectietitel -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
-        <p>Contact us for any information</p>
-      </div><!-- End Section Title -->
+        <p>Neem contact met ons op voor meer informatie</p>
+      </div><!-- Einde Sectietitel -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -664,26 +1227,26 @@
               <div class="col-lg-12">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
                   <i class="bi bi-geo-alt"></i>
-                  <h3>Address</h3>
-                  <p>A108 Adam Street, New York, NY 535022</p>
+                  <h3>Adres</h3>
+                  <p>A108 Adamstraat, New York, NY 535022</p>
                 </div>
-              </div><!-- End Info Item -->
+              </div><!-- Einde Info Item -->
 
               <div class="col-md-6">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
                   <i class="bi bi-telephone"></i>
-                  <h3>Call Us</h3>
+                  <h3>Bel Ons</h3>
                   <p>+1 5589 55488 55</p>
                 </div>
-              </div><!-- End Info Item -->
+              </div><!-- Einde Info Item -->
 
               <div class="col-md-6">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
                   <i class="bi bi-envelope"></i>
-                  <h3>Email Us</h3>
+                  <h3>E-mail Ons</h3>
                   <p>info@example.com</p>
                 </div>
-              </div><!-- End Info Item -->
+              </div><!-- Einde Info Item -->
 
             </div>
           </div>
@@ -693,38 +1256,118 @@
               <div class="row gy-4">
 
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                  <input type="text" name="name" class="form-control" placeholder="Uw Naam" required="">
                 </div>
 
                 <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                  <input type="email" class="form-control" name="email" placeholder="Uw E-mail" required="">
                 </div>
 
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                  <input type="text" class="form-control" name="subject" placeholder="Onderwerp" required="">
                 </div>
 
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="4" placeholder="Message" required=""></textarea>
+                  <textarea class="form-control" name="message" rows="4" placeholder="Bericht" required=""></textarea>
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
+                  <div class="loading">Laden...</div>
                   <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  <div class="sent-message">Uw bericht is verzonden. Bedankt!</div>
 
-                  <button type="submit">Send Message</button>
+                  <button type="submit">Verzend Bericht</button>
                 </div>
 
               </div>
             </form>
-          </div><!-- End Contact Form -->
+          </div><!-- Einde Contactformulier -->
 
         </div>
 
       </div>
 
-    </section><!-- /Contact Section -->
+</section><!-- /Contactsectie -->
+
+<section id="contact1" class="ENG contact section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Contact us for more information</p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row gy-4">
+      <div class="col-lg-6 ">
+        <div class="row gy-4">
+
+          <div class="col-lg-12">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-geo-alt"></i>
+              <h3>Address</h3>
+              <p>A108 Adam Street, New York, NY 535022</p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-telephone"></i>
+              <h3>Call Us</h3>
+              <p>+1 5589 55488 55</p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-envelope"></i>
+              <h3>Email Us</h3>
+              <p>info@example.com</p>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
+          <div class="row gy-4">
+
+            <div class="col-md-6">
+              <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+            </div>
+
+            <div class="col-md-6 ">
+              <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+            </div>
+
+            <div class="col-md-12">
+              <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+            </div>
+
+            <div class="col-md-12">
+              <textarea class="form-control" name="message" rows="4" placeholder="Message" required=""></textarea>
+            </div>
+
+            <div class="col-md-12 text-center">
+              <div class="loading">Loading...</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+
+              <button type="submit">Send Message</button>
+            </div>
+
+          </div>
+        </form>
+      </div><!-- End Contact Form -->
+
+    </div>
+
+  </div>
+
+</section><!-- /Contact Section -->
+
 
   </main>
 
@@ -734,7 +1377,7 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/Logo1.png" alt="">
+            <img src="assets/img/Logo1.png" alt="">
           </a>
           <div class="footer-contact pt-3">
             <p>A108 Adam Street</p>
@@ -799,8 +1442,10 @@
 
   </footer>
 
+  
+
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" style="display: none;"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
